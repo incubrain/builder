@@ -1,0 +1,15 @@
+packages:
+  - './'
+  - 'layer'
+  - 'cli'
+  - 'playground'
+  - 'examples/default'
+
+ignoredBuiltDependencies:
+  - '@parcel/watcher'
+  - '@tailwindcss/oxide'
+  - esbuild
+  - unrs-resolver
+
+onlyBuiltDependencies:
+  - better-sqlite3

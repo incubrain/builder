@@ -1,0 +1,28 @@
+{
+  "name": "create-builder",
+  "version": "0.1.0",
+  "description": "Create a new IncuBrain Builder project",
+  "license": "MIT",
+  "type": "module",
+  "bin": {
+    "create-builder": "./dist/main.js"
+  },
+  "main": "./dist/main.js",
+  "files": [
+    "dist"
+  ],
+  "scripts": {
+    "prepare": "pnpm build",
+    "build": "tsup main.ts --format esm --out-dir dist",
+    "dev": "tsx main.ts"
+  },
+  "dependencies": {
+    "@nuxt/cli": "^3.33.0",
+    "citty": "^0.2.1"
+  },
+  "devDependencies": {
+    "@types/node": "^22.19.0",
+    "tsup": "^8.5.0",
+    "tsx": "^4.19.0"
+  }
+}

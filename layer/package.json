@@ -1,0 +1,45 @@
+{
+  "name": "@incubrain/builder",
+  "description": "Nuxt layer for IncuBrain Builder — fast-to-beta app template",
+  "version": "0.1.0",
+  "type": "module",
+  "main": "./nuxt.config.ts",
+  "exports": {
+    ".": "./nuxt.config.ts",
+    "./*": "./*"
+  },
+  "license": "MIT",
+  "author": "IncuBrain",
+  "files": [
+    "nuxt.config.ts",
+    "app",
+    "server",
+    "shared"
+  ],
+  "scripts": {
+    "dev": "nuxt dev",
+    "build": "nuxt build",
+    "preview": "nuxt preview"
+  },
+  "dependencies": {
+    "@iconify-json/lucide": "^1.2.90",
+    "@nuxt/kit": "^4.3.0",
+    "@nuxt/ui": "^4.5.0",
+    "@nuxt/fonts": "^0.11.0",
+    "@nuxt/image": "^2.0.0",
+    "@vueuse/nuxt": "^14.0.0",
+    "better-auth": "^1.2.0",
+    "drizzle-orm": "^0.44.0",
+    "@libsql/client": "^0.15.0",
+    "resend": "^4.0.0",
+    "tailwindcss": "^4.1.0",
+    "zod": "^3.24.0"
+  },
+  "devDependencies": {
+    "nuxt": "^4.3.0",
+    "drizzle-kit": "^0.31.0"
+  },
+  "peerDependencies": {
+    "nuxt": "4.x"
+  }
+}

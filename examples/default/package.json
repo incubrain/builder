@@ -1,0 +1,22 @@
+{
+  "name": "@builder/default",
+  "private": true,
+  "type": "module",
+  "scripts": {
+    "postinstall": "nuxt prepare",
+    "dev": "nuxt dev",
+    "build": "nuxt build",
+    "preview": "nuxt preview",
+    "db:push": "drizzle-kit push",
+    "db:generate": "drizzle-kit generate",
+    "db:migrate": "drizzle-kit migrate",
+    "db:studio": "drizzle-kit studio"
+  },
+  "dependencies": {
+    "@incubrain/builder": "workspace:*",
+    "nuxt": "^4.3.0"
+  },
+  "devDependencies": {
+    "drizzle-kit": "^0.31.0"
+  }
+}

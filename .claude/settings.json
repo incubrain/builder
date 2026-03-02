@@ -1,0 +1,60 @@
+{
+  "permissions": {
+    "allow": [
+      "Bash(pnpm dev*)",
+      "Bash(pnpm build*)",
+      "Bash(pnpm lint*)",
+      "Bash(pnpm test*)",
+      "Bash(pnpm run dev*)",
+      "Bash(pnpm run build*)",
+      "Bash(pnpm run lint*)",
+      "Bash(pnpm typecheck*)",
+      "Bash(pnpm verify*)",
+      "Bash(pnpm prepare*)",
+      "Bash(pnpm db:*)",
+      "Bash(pnpm cli:*)",
+      "Bash(git status*)",
+      "Bash(git diff*)",
+      "Bash(git log*)",
+      "Bash(git add *)",
+      "Bash(git commit *)",
+      "Bash(npx eslint *)",
+      "Bash(npx prettier *)",
+      "Bash(bash scripts/install-skills.sh*)",
+      "Bash(npx skills *)"
+    ],
+    "deny": [
+      "Read(./.env)",
+      "Read(./.env.*)",
+      "Read(./secrets/**)"
+    ]
+  },
+  "env": {
+    "CLAUDE_CODE_AUTOCOMPACT_PCT_OVERRIDE": "80"
+  },
+  "hooks": {
+    "SessionStart": [
+      {
+        "matcher": "compact",
+        "hooks": [
+          {
+            "type": "command",
+            "command": "echo 'POST-COMPACTION: Use pnpm (not npm). This is a template, not a product. Max 50 lines/component. Check VueUse before custom. Server utils in layer use relative imports (not ~/). Auth via useAuth() composable. Check .agents/rules/ for detailed guidelines.'"
+          }
+        ]
+      }
+    ],
+    "PostToolUse": [
+      {
+        "matcher": "Write|Edit",
+        "hooks": [
+          {
+            "type": "command",
+            "command": "filepath=$(echo $CLAUDE_TOOL_INPUT | jq -r '.file_path // .filePath // empty'); if [ -n \"$filepath\" ]; then case \"$filepath\" in *.vue|*.ts|*.js) npx eslint --fix \"$filepath\" 2>/dev/null || true;; esac; fi",
+            "timeout": 30
+          }
+        ]
+      }
+    ]
+  }
+}

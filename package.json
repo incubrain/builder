@@ -1,0 +1,36 @@
+{
+  "name": "@incubrain/builder-workspace",
+  "version": "0.1.0",
+  "private": true,
+  "type": "module",
+  "scripts": {
+    "dev": "nuxt dev examples/default",
+    "dev:pg": "nuxt dev playground",
+    "build": "nuxt build examples/default",
+    "lint": "eslint .",
+    "lint:fix": "eslint . --fix",
+    "typecheck": "nuxt typecheck layer",
+    "verify": "nuxt prepare layer && pnpm run lint && pnpm run typecheck",
+    "db:push": "pnpm --filter @builder/default db:push",
+    "db:generate": "pnpm --filter @builder/default db:generate",
+    "db:migrate": "pnpm --filter @builder/default db:migrate",
+    "db:studio": "pnpm --filter @builder/default db:studio",
+    "db:seed": "pnpm --filter @builder/default db:seed",
+    "cli:build": "pnpm --filter create-builder build",
+    "layer:publish": "cd layer && npm publish --access public",
+    "cli:publish": "cd cli && npm publish --access public",
+    "test": "vitest",
+    "test:watch": "vitest --watch"
+  },
+  "dependencies": {
+    "@nuxt/eslint": "^1.15.1",
+    "@nuxt/eslint-config": "^1.15.1",
+    "eslint": "^10.0.0",
+    "nuxt": "^4.3.0",
+    "typescript": "^5.9.0"
+  },
+  "devDependencies": {
+    "vitest": "^4.0.0"
+  },
+  "packageManager": "pnpm@10.28.2"
+}
