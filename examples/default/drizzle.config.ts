@@ -6,6 +6,6 @@ export default defineConfig({
   out: './server/database/migrations',
   dbCredentials: {
     url: process.env.NUXT_TURSO_URL || 'file:./data/local.db',
-    authToken: process.env.NUXT_TURSO_AUTH_TOKEN || '',
+    authToken: process.env.NUXT_TURSO_AUTH_TOKEN || undefined,
   },
 })

@@ -53,20 +53,25 @@ export async function processCopyList(projectDir: string): Promise<void> {
   validateRepo(repo)
   validateRef(ref)
 
-  console.log(`\nFetching ${files.length} shared files from ${repo}@${ref}...`)
+  // Validate ALL file paths before starting any downloads.
+  // Path traversal attempts must hard-fail, not be silently caught.
+  const resolvedFiles = files.map((file) => {
+    validateFilePath(file.src)
+    const dest = file.dest ?? file.src
+    validateFilePath(dest)
+    const destPath = safeDest(projectDir, dest)
+    return { src: file.src, dest, destPath }
+  })
+
+  console.log(`\nFetching ${resolvedFiles.length} shared files from ${repo}@${ref}...`)
 
   const results = await Promise.allSettled(
-    files.map(async (file) => {
-      validateFilePath(file.src)
-      const dest = file.dest ?? file.src
-      validateFilePath(dest)
-
-      const url = `${GITHUB_RAW}/${repo}/${ref}/${file.src}`
-      const destPath = safeDest(projectDir, dest)
+    resolvedFiles.map(async ({ src, dest, destPath }) => {
+      const url = `${GITHUB_RAW}/${repo}/${ref}/${src}`
 
       const response = await fetch(url)
       if (!response.ok) {
-        throw new Error(`${file.src}: ${response.status} ${response.statusText}`)
+        throw new Error(`${src}: ${response.status} ${response.statusText}`)
       }
 
       const content = await response.text()

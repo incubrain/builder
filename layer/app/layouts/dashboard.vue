@@ -1,7 +1,7 @@
 <script setup lang="ts">
 import type { NavigationMenuItem } from '@nuxt/ui'
 
-const { user, signOut } = useAuth()
+const { user, signOut } = await useAuth()
 
 const navItems: NavigationMenuItem[] = [
   {

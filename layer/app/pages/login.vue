@@ -3,7 +3,7 @@ definePageMeta({
   layout: 'auth',
 })
 
-const { signInWithGitHub, isAuthenticated } = useAuth()
+const { signInWithGitHub, isAuthenticated } = await useAuth()
 const email = ref('')
 const magicLinkSent = ref(false)
 const toast = useToast()
@@ -16,7 +16,7 @@ watch(isAuthenticated, (val) => {
 async function handleMagicLink() {
   if (!email.value) return
   try {
-    const { signInWithMagicLink } = useAuth()
+    const { signInWithMagicLink } = await useAuth()
     await signInWithMagicLink(email.value)
     magicLinkSent.value = true
     toast.add({ title: 'Check your email', description: 'We sent you a magic link to sign in.', color: 'success' })

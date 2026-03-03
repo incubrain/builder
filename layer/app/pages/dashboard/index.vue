@@ -4,7 +4,7 @@ definePageMeta({
   title: 'Dashboard',
 })
 
-const { user } = useAuth()
+const { user } = await useAuth()
 </script>
 
 <template>

@@ -4,7 +4,7 @@ definePageMeta({
   title: 'Settings',
 })
 
-const { user, signOut } = useAuth()
+const { user, signOut } = await useAuth()
 </script>
 
 <template>
@@ -23,7 +23,7 @@ const { user, signOut } = useAuth()
       <div class="space-y-4">
         <div class="flex items-center gap-4">
           <UAvatar
-            :src="user?.image"
+            :src="user?.image ?? undefined"
             :alt="user?.name || 'User'"
             size="lg"
           />

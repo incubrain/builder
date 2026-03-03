@@ -1,8 +1,5 @@
 export default defineNuxtRouteMiddleware(async (to) => {
-  const { isAuthenticated, isPending } = useAuth()
-
-  // Wait for session to resolve
-  if (isPending.value) return
+  const { isAuthenticated } = await useAuth()
 
   // Protect dashboard routes
   if (to.path.startsWith('/dashboard') && !isAuthenticated.value) {
