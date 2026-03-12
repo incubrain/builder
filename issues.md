@@ -1,0 +1,7 @@
+- [ ] review the 'docs' dir, take our key learnings and findings and summarise them, add this information to a CHANGELOG.md, then delete the docs/ dir if not needed
+- [ ] the playground has almost NO customisation, this is not really that helpful, as it is not testing anything meaningful...
+- [ ] we need to create a examples/incubrain-builder usecase of this layer, this will help us to test everything and speed up the development process, use this as a starting point reference to get things setup: /Users/mac/Development/incubrain/product-validator/examples/foundry
+- [ ] the AI Harness is not a part of this project, it has been extracted a seperate repo; remove any mention/logic related to it from this repo
+- [ ] need clear 'Alpha/Beta' tags for this project, users should be able to select what stage their project is in and this would be added to the header navbar
+- [ ] add skills creator agent skill, and look for 'agent creator' skill, we are missing critical frontmatter in the skills/agents
+- [ ]
