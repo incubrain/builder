@@ -21,6 +21,5 @@ useSeoMeta({
       <NuxtPage />
     </NuxtLayout>
 
-    <UNotifications />
   </UApp>
 </template>

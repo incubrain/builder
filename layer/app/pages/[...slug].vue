@@ -5,7 +5,7 @@ definePageMeta({
 </script>
 
 <template>
-  <div class="min-h-screen flex items-center justify-center">
+  <div class="min-h-screen flex items-center justify-center" aria-label="Page not found">
     <div class="text-center">
       <h1 class="text-6xl font-bold text-highlighted mb-4">
         404
@@ -14,6 +14,7 @@ definePageMeta({
         Page not found
       </p>
       <UButton
+        aria-label="Go to home page"
         label="Go home"
         to="/"
         icon="i-lucide-arrow-left"

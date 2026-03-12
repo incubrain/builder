@@ -28,25 +28,28 @@ const bottomItems: NavigationMenuItem[] = [
 <template>
   <UDashboardGroup>
     <UDashboardSidebar
+      aria-label="Main sidebar"
       collapsible
       resizable
       :ui="{ footer: 'border-t border-default' }"
     >
       <template #header="{ collapsed }">
         <div class="flex items-center" :class="collapsed ? 'justify-center' : 'gap-2 px-1'">
-          <UIcon name="i-lucide-blocks" class="size-6 text-primary shrink-0" />
+          <UIcon name="i-lucide-blocks" class="size-6 text-primary shrink-0" aria-hidden="true" />
           <span v-if="!collapsed" class="font-semibold text-highlighted truncate">Builder</span>
         </div>
       </template>
 
       <template #default="{ collapsed }">
         <UNavigationMenu
+          aria-label="Main navigation"
           :collapsed="collapsed"
           :items="navItems"
           orientation="vertical"
         />
 
         <UNavigationMenu
+          aria-label="Secondary navigation"
           :collapsed="collapsed"
           :items="bottomItems"
           orientation="vertical"
@@ -63,6 +66,7 @@ const bottomItems: NavigationMenuItem[] = [
           }]]"
         >
           <UButton
+            aria-label="User menu"
             :avatar="user?.image ? { src: user.image } : undefined"
             :icon="!user?.image ? 'i-lucide-user' : undefined"
             :label="collapsed ? undefined : (user?.name || user?.email || 'Account')"
@@ -75,14 +79,14 @@ const bottomItems: NavigationMenuItem[] = [
       </template>
     </UDashboardSidebar>
 
-    <UDashboardPanel>
+    <UDashboardPanel aria-label="Main content">
       <template #header>
         <UDashboardNavbar :title="$route.meta.title as string || 'Dashboard'" />
       </template>
 
-      <div class="p-6">
+      <main class="p-6">
         <slot />
-      </div>
+      </main>
     </UDashboardPanel>
   </UDashboardGroup>
 </template>

@@ -13,7 +13,7 @@ function handleError() {
 </script>
 
 <template>
-  <div class="min-h-screen flex items-center justify-center">
+  <div class="min-h-screen flex items-center justify-center" role="alert" aria-label="Error page">
     <div class="text-center">
       <h1 class="text-6xl font-bold text-highlighted mb-4">
         {{ error.statusCode }}
@@ -22,6 +22,7 @@ function handleError() {
         {{ error.statusMessage || error.message || 'Something went wrong' }}
       </p>
       <UButton
+        aria-label="Go to home page"
         label="Go home"
         icon="i-lucide-arrow-left"
         variant="soft"

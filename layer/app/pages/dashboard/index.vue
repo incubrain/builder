@@ -8,7 +8,7 @@ const { user } = await useAuth()
 </script>
 
 <template>
-  <div>
+  <div aria-label="Dashboard home">
     <h1 class="text-2xl font-bold text-highlighted mb-2">
       Welcome{{ user?.name ? `, ${user.name}` : '' }}
     </h1>

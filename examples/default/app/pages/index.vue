@@ -5,8 +5,8 @@ definePageMeta({
 </script>
 
 <template>
-  <div class="min-h-screen flex flex-col items-center justify-center p-8">
-    <UIcon name="i-lucide-blocks" class="size-16 text-primary mb-6" />
+  <div class="min-h-screen flex flex-col items-center justify-center p-8" aria-label="Landing page">
+    <UIcon name="i-lucide-blocks" class="size-16 text-primary mb-6" aria-hidden="true" />
 
     <h1 class="text-4xl font-bold text-highlighted mb-4 text-center">
       Build faster with Builder
@@ -17,8 +17,9 @@ definePageMeta({
       go from idea to beta.
     </p>
 
-    <div class="flex gap-3">
+    <nav class="flex gap-3" aria-label="Get started actions">
       <UButton
+        aria-label="Get started - go to login"
         label="Get started"
         to="/login"
         size="lg"
@@ -26,12 +27,13 @@ definePageMeta({
         trailing
       />
       <UButton
+        aria-label="Go to dashboard"
         label="Dashboard"
         to="/dashboard"
         size="lg"
         color="neutral"
         variant="outline"
       />
-    </div>
+    </nav>
   </div>
 </template>

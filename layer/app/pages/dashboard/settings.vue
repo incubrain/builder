@@ -28,10 +28,10 @@ const { user, signOut } = await useAuth()
             size="lg"
           />
           <div>
-            <p class="font-medium text-highlighted">
+            <p class="font-medium text-highlighted" aria-label="User name">
               {{ user?.name || 'No name set' }}
             </p>
-            <p class="text-sm text-muted">
+            <p class="text-sm text-muted" aria-label="User email">
               {{ user?.email || 'No email' }}
             </p>
           </div>
@@ -41,6 +41,7 @@ const { user, signOut } = await useAuth()
       <template #footer>
         <div class="flex justify-end">
           <UButton
+            aria-label="Sign out"
             label="Sign out"
             color="error"
             variant="soft"

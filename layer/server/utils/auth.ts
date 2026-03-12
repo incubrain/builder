@@ -2,16 +2,29 @@ import { betterAuth } from 'better-auth'
 import { drizzleAdapter } from 'better-auth/adapters/drizzle'
 import { magicLink } from 'better-auth/plugins'
 import { db } from './db'
+import * as schema from '../database/schema'
 
 const config = useRuntimeConfig()
+const isDev = import.meta.dev
+
+export const TEST_USER = {
+  email: 'test@builder.dev',
+  password: 'builder-test-1234',
+  name: 'Test User',
+} as const
 
 export const auth = betterAuth({
   baseURL: config.public.appUrl,
-  secret: config.betterAuthSecret,
+  secret: config.betterAuthSecret || (isDev ? 'dev-secret-do-not-use-in-production' : ''),
 
   database: drizzleAdapter(db, {
     provider: 'sqlite',
+    schema,
   }),
+
+  emailAndPassword: {
+    enabled: isDev,
+  },
 
   session: {
     expiresIn: 60 * 60 * 24 * 7, // 7 days
@@ -24,10 +37,14 @@ export const auth = betterAuth({
   },
 
   socialProviders: {
-    github: {
-      clientId: config.githubClientId,
-      clientSecret: config.githubClientSecret,
-    },
+    ...(config.githubClientId && config.githubClientSecret
+      ? {
+          github: {
+            clientId: config.githubClientId,
+            clientSecret: config.githubClientSecret,
+          },
+        }
+      : {}),
   },
 
   plugins: [
