@@ -12,6 +12,6 @@
     "@incubrain/builder": "workspace:*"
   },
   "devDependencies": {
-    "nuxt": "^4.3.0"
+    "nuxt": "^4.4.6"
   }
 }
